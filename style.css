@@ -1,6 +1,6 @@
 :root {
   --dark-gray: #333;
-  --primary-color: #fcb001;
+  --primary-color: #f57c00;
 }
 
 body {
@@ -9,5 +9,9 @@ body {
 }
 
 #glass-icon {
+  font-size: 2.1rem;
+}
+
+a.brand-logo {
   font-size: 2.1rem;
 }
