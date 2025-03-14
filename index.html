@@ -5,19 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Compiled and minified CSS -->
     <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Favorite Cocktail Recipe</title>
   </head>
   <body>
-    <header>
-      <h1>Favorite Cocktail Recipe</h1>
-    </header>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="index.html" class="brand-logo center">
+            <i id="glass-icon" class="large material-icons hide-on-med-and-down"
+              >local_bar</i
+            >
+            FIVE O'CLOCK SOMEWHERE</a
+          >
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger"
+            ><i class="material-icons">menu</i></a
+          >
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="about.html">About</a></li>
+            <li><a href="tipjar.html">Tip Jar</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <ul class="sidenav" id="mobile-nav">
+        <li><a href="aboout.html">About</a></li>
+        <li><a href="tipjar.html">Tip Jar</a></li>
+        <li><a href="random.html">Random Drink</a></li>
+      </ul>
+    </div>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

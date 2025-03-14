@@ -1,0 +1,13 @@
+:root {
+  --dark-gray: #333;
+  --primary-color: #fcb001;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+#glass-icon {
+  font-size: 2.1rem;
+}
