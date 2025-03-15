@@ -15,6 +15,10 @@ body {
   font-weight: 00;
 }
 
+.drag-target {
+  height: 95vh;
+}
+
 h1,
 h2,
 h3,
