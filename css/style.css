@@ -28,6 +28,12 @@ h6 {
   font-family: 'Roboto', sans-serif;
 }
 
+h1 {
+  width: 60%;
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+
 #glass-icon {
   font-size: 1.7rem;
   color: var(--dark-gray);
@@ -68,8 +74,16 @@ nav ul a {
   color: var(--dark-gray);
 }
 
+.btn {
+  background-color: var(--primary-color);
+}
+
+.btn:hover {
+  background-color: hsl(30, 100%, 70%);
+}
+
 .input-field {
-  width: 60%;
+  width: 50%;
 }
 
 #drink:active,
@@ -97,8 +111,10 @@ nav ul a {
 
 .right-main {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .overlay {
