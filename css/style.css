@@ -58,8 +58,9 @@ nav ul a {
 
 .left-main {
   background: url('/img/left-main-image.jpg');
-  background-size: cover;
+  background-size: contain;
   background-position: static;
+  position: relative;
 }
 
 .overlay {
@@ -69,5 +70,5 @@ nav ul a {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.478);
+  background-color: rgba(0, 0, 0, 0.85);
 }
