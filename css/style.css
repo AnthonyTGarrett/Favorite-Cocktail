@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* * {
+  outline: 1px red solid;
+} */
+
 :root {
   --dark-gray: #333;
   --primary-color: rgb(245, 124, 0);
@@ -57,10 +61,12 @@ nav ul a {
 }
 
 .left-main {
-  background: url('/img/left-main-image.jpg');
+  background: no-repeat url('/img/left-main-image.jpg');
   background-size: contain;
-  background-position: static;
+  background-position: 15% 85%;
+  background-attachment: fixed;
   position: relative;
+  background-color: #000;
 }
 
 .overlay {
