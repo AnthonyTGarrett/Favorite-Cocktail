@@ -32,6 +32,7 @@ h1 {
   width: 60%;
   font-size: 3.5rem;
   line-height: 1.5;
+  text-align: center;
 }
 
 #glass-icon {
@@ -110,10 +111,28 @@ nav ul a {
 }
 
 .right-main {
+  position: relative;
+}
+
+.right-main h1 {
+  width: 40%;
+}
+
+.right-main img {
+  width: 45%;
+  height: auto;
+}
+
+.cocktail-header-box {
+  position: absolute;
+  top: 12%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.search-buttons {
   text-align: center;
 }
 
