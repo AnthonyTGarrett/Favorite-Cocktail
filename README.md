@@ -1,3 +1,3 @@
 # Cocktail Recipes
 
-# Tasting out Materialize CSS
+# Testing out Materialize CSS
