@@ -153,3 +153,7 @@ nav ul a {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.85);
 }
+
+section.popular-drinks {
+  padding: 4rem 0;
+}

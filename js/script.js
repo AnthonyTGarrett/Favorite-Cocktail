@@ -1,19 +1,47 @@
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.sidenav');
   var instances = M.Sidenav.init(elems, { edge: 'right' });
-
-  async function getData() {
-    const url = 'www.thecocktaildb.com/api/json/v1/1/random.php';
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-
-      const json = await response.json();
-      console.log(json);
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
 });
+
+document.querySelector('#random-drink').addEventListener('click', getFetch);
+let content = document.querySelector('#popular-drinks');
+
+function getFetch() {
+  content.innerHTML = '';
+  const choice = document.querySelector('#choice').value;
+
+  const url = `https://www.thecocktaildb.com/api/json/v1/1/random.php`;
+
+  fetch(url)
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+      if (!data.length == 0) {
+        console.log(data);
+        data.forEach(el => {
+          content.innerHTML += `<div class="card">
+                <div class="card-image">
+                  <img src="images/sample-1.jpg" />
+                  <span class="card-title">Card Title</span>
+                </div>
+                <div class="card-content">
+                  <p>
+                    I am a very simple card. I am good at containing small bits
+                    of information. I am convenient because I require little
+                    markup to use effectively.
+                  </p>
+                </div>
+                <div class="card-action">
+                  <a href="#">This is a link</a>
+                </div>
+              </div>`;
+        });
+      } else {
+        content.innerHTML = `<p class="text-red-700 text-base text-2xl text-center py-2">
+          No results found
+        </p>`;
+      }
+    })
+    .catch(err => {
+      console.log(`error ${err}`);
+    });
+}
