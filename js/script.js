@@ -3,41 +3,47 @@ document.addEventListener('DOMContentLoaded', function () {
   var instances = M.Sidenav.init(elems, { edge: 'right' });
 });
 
-let content = document.querySelector('#popular-drinks');
+const randomButton = document.querySelector('#random-drink');
 
-const randomItemUrl =
-  'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
+randomButton.addEventListener('click', () => {
+  window.location.href = 'drink.html';
+});
+randomButton.addEventListener('click', () => {
+  console.log('Hello World');
+}));
 
-async function getSingleItem(url) {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
+const singleRandomItemUrl =
+  'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+const nameSearchUrl =
+  'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error.message);
+async function fetchProducts(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP error: ${response.status}`);
   }
+  const data = await response.json();
+  return data;
 }
 
-const singleItem = getSingleItem(randomItemUrl);
-console.log(singleItem);
-
-singleItem.then(response => {
-  response.drinks.forEach(element => {
-    console.log(element);
-  });
-});
-
-// const fetchPromise = fetch(
-//   'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-// );
-
-// fetchPromise.then(response => {
-//   const jsonPromise = response.json();
-//   jsonPromise.then(data => {
+// const promise = fetchProducts(singleRandomItemUrl);
+// promise
+//   .then(data => {
 //     console.log(data.drinks[0]);
+//   })
+//   .catch(error => {
+//     console.error(`Could not get products: ${error}`);
 //   });
-// });
+
+function randomDisplay() {
+  const promise = fetchProducts(singleRandomItemUrl);
+  console.log(promise);
+
+  promise
+    .then(data => {
+      console.log(data.drinks[0]);
+    })
+    .catch(error => {
+      console.error(`Could not get products: ${error}`);
+    });
+}
