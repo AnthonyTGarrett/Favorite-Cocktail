@@ -3,10 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Favorite Cocktail Recipe</title>
   </head>
   <body>
-    <div id="items"></div>
+    <main onload="singleItemList()">
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper white">
+            <a href="index.html" class="brand-logo center">
+              <i id="glass-icon" class="material-icons hide-on-med-and-down"
+                >local_bar</i
+              >
+              Five O'Clock
+              <span class="hide-on-med-and-down">Somewhere</span></a
+            >
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger right"
+              ><i class="material-icons hamburger">menu</i></a
+            >
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="about.html">ABOUT</a></li>
+              <li><a href="tipjar.html">TIP JAR</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Side Navigation HTML -->
+      <ul class="sidenav" id="mobile-nav">
+        <li><a href="aboout.html">About</a></li>
+        <li><a href="tipjar.html">Tip Jar</a></li>
+        <li><a href="random.html">Random Drink</a></li>
+      </ul>
+
+      <div class="container">
+        <div class="row single-drink-insert"></div>
+      </div>
+      <a class="waves-effect waves-light btn btn-small" id="random-drink"
+        >Random Drink</a
+      >
+
+      <section class="popular-drinks" id="popular-drinks">
+        <h2 class="flow-text center">Current Popular Drinks for your next party</h2>
+        <hr>
+        <div class="container">
+          <div class="row" id="popular-drink-items">
+            
+
+        </div>
+      </section>
+    </main>
     <script src="js/script.js"></script>
   </body>
 </html>
