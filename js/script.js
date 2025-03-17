@@ -6,17 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
 document.querySelector('#random-drink').addEventListener('click', getFetch);
 let content = document.querySelector('#popular-drinks');
 
-function getFetch() {
+const randomItemUrl = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+
+function getFetch(url) {
   content.innerHTML = '';
   const choice = document.querySelector('#choice').value;
-
-  const url = `https://www.thecocktaildb.com/api/json/v1/1/random.php`;
 
   fetch(url)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
       if (!data.length == 0) {
-        console.log(data);
         data.forEach(el => {
           content.innerHTML += `<div class="card">
                 <div class="card-image">
