@@ -3,44 +3,41 @@ document.addEventListener('DOMContentLoaded', function () {
   var instances = M.Sidenav.init(elems, { edge: 'right' });
 });
 
-document.querySelector('#random-drink').addEventListener('click', getFetch);
 let content = document.querySelector('#popular-drinks');
 
-const randomItemUrl = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+const randomItemUrl =
+  'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
 
-function getFetch(url) {
-  content.innerHTML = '';
-  const choice = document.querySelector('#choice').value;
+async function getSingleItem(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
 
-  fetch(url)
-    .then(res => res.json()) // parse response as JSON
-    .then(data => {
-      if (!data.length == 0) {
-        data.forEach(el => {
-          content.innerHTML += `<div class="card">
-                <div class="card-image">
-                  <img src="images/sample-1.jpg" />
-                  <span class="card-title">Card Title</span>
-                </div>
-                <div class="card-content">
-                  <p>
-                    I am a very simple card. I am good at containing small bits
-                    of information. I am convenient because I require little
-                    markup to use effectively.
-                  </p>
-                </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
-                </div>
-              </div>`;
-        });
-      } else {
-        content.innerHTML = `<p class="text-red-700 text-base text-2xl text-center py-2">
-          No results found
-        </p>`;
-      }
-    })
-    .catch(err => {
-      console.log(`error ${err}`);
-    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
 }
+
+const singleItem = getSingleItem(randomItemUrl);
+console.log(singleItem);
+
+singleItem.then(response => {
+  response.drinks.forEach(element => {
+    console.log(element);
+  });
+});
+
+// const fetchPromise = fetch(
+//   'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+// );
+
+// fetchPromise.then(response => {
+//   const jsonPromise = response.json();
+//   jsonPromise.then(data => {
+//     console.log(data.drinks[0]);
+//   });
+// });
