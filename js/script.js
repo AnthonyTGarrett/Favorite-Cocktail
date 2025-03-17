@@ -5,12 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const randomButton = document.querySelector('#random-drink');
 
-randomButton.addEventListener('click', () => {
-  window.location.href = 'drink.html';
-});
-randomButton.addEventListener('click', () => {
-  console.log('Hello World');
-}));
+randomButton.addEventListener('click', randomDisplay);
 
 const singleRandomItemUrl =
   'https://www.thecocktaildb.com/api/json/v1/1/random.php';
@@ -26,24 +21,18 @@ async function fetchProducts(url) {
   return data;
 }
 
-// const promise = fetchProducts(singleRandomItemUrl);
-// promise
-//   .then(data => {
-//     console.log(data.drinks[0]);
-//   })
-//   .catch(error => {
-//     console.error(`Could not get products: ${error}`);
-//   });
-
 function randomDisplay() {
   const promise = fetchProducts(singleRandomItemUrl);
-  console.log(promise);
-
   promise
     .then(data => {
       console.log(data.drinks[0]);
+      document.querySelector('#items').innerHTML = '<h1>Trial</h1>';
     })
     .catch(error => {
       console.error(`Could not get products: ${error}`);
+    })
+    .finally(() => {
+      // Navigate to the new page after the API call (success or failure)
+      window.location.href = 'drink.html';
     });
 }
