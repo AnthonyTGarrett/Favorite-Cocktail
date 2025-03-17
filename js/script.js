@@ -9,12 +9,11 @@ const popularDrinksInsert = document.getElementById('popular-drink-items');
 // randomButton.addEventListener('click', randomDisplay);
 
 const singleRandomItemUrl =
-  'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+  'https://www.thecocktaildb.com/api/json/v2/961249867/random.php';
 const nameSearchUrl =
-  'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  'https://www.thecocktaildb.com/api/json/v2/961249867/search.php?s=';
 
-const popularDrinksUrl =
-  'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
+const popularDrinksUrl = `https://www.thecocktaildb.com/api/json/v2/${process.env.MY_KEY}/popular.php`;
 
 async function fetchProducts(url) {
   const response = await fetch(url);
@@ -29,23 +28,28 @@ const popularDrinks = fetchProducts(popularDrinksUrl);
 
 popularDrinks
   .then(data => {
-    data.drinks.forEach(element => {
+    const partialArr = data.drinks.splice(0, 9);
+    partialArr.forEach(element => {
       popularDrinksInsert.innerHTML += `
-      <div class="col s12 m6 l3">
-        <div class="card">
+      <div class="col s12 m6 l4">
+        <div class="card hoverable">
             <div class="card-image">
               <img src="${element.strDrinkThumb}" />
               <span class="card-title">${element.strDrink}</span>
                 </div>
                 <div class="card-content">
                   <p>
-                    I am a very simple card. I am good at containing small bits
-                    of information. I am convenient because I require little
-                    markup to use effectively.
+                    Glass: ${element.strGlass}
+                  </p>
+                  <p>
+                    Alcohol: ${element.strIngredient1}
+                  </p>
+                  <p>
+                    Type: ${element.strAlcoholic}
                   </p>
                 </div>
                 <div class="card-action">
-                  <a href="#">This is a link</a>
+                  <a href="#">Full Recipe</a>
                 </div>
           </div>
         </div>

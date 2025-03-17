@@ -7,12 +7,13 @@
 :root {
   --dark-gray: #333;
   --primary-color: rgb(245, 124, 0);
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
   font-optical-sizing: auto;
-  font-weight: 00;
+  font-weight: 400;
 }
 
 .drag-target {
@@ -156,4 +157,13 @@ nav ul a {
 
 section.popular-drinks {
   padding: 4rem 0;
+}
+
+.popular-drinks hr {
+  width: 14rem;
+  border: 1px solid var(--primary-color);
+}
+
+.popular-drinks .container {
+  margin-top: 6rem;
 }
