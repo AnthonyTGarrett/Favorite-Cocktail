@@ -13,7 +13,7 @@ const singleRandomItemUrl =
 const nameSearchUrl =
   'https://www.thecocktaildb.com/api/json/v2/961249867/search.php?s=';
 
-const popularDrinksUrl = `https://www.thecocktaildb.com/api/json/v2/${process.env.MY_KEY}/popular.php`;
+const popularDrinksUrl = `https://www.thecocktaildb.com/api/json/v2/961249867/popular.php`;
 
 async function fetchProducts(url) {
   const response = await fetch(url);
