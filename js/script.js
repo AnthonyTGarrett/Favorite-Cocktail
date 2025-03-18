@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems, { edge: 'right' });
+  var instances = M.Sidenav(elems, { edge: 'right' });
 });
 
 const randomButton = document.getElementById('random-drink');
@@ -32,7 +32,7 @@ async function fetchProducts(url) {
 const popularDrinks = fetchProducts(popularDrinksUrl);
 
 window.onload = event => {
-  if (document.URL.endsWith('drink.html')) {
+  if (document.URL.endsWith('random.html')) {
     const randomDrink = fetchProducts(singleRandomItemUrl);
 
     randomDrink.then(data => {
@@ -111,6 +111,6 @@ function randomDisplay() {
     })
     .finally(() => {
       // Navigate to the new page after the API call (success or failure)
-      window.location.href = 'drink.html';
+      window.location.href = 'random.html';
     });
 }
