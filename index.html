@@ -63,20 +63,25 @@
             />
             <div class="cocktail-header-box">
               <h1 class="flow-text">Find a drink for your 5 o'Clock</h1>
-              <div class="input-field">
+              <form action="/drink.html" method="GET" class="input-field">
                 <label for="drink">Find A Cocktail</label>
-                <input type="text" id="drink" name="drink" />
+                <input type="text" id="drink" name="drink" required />
                 <div class="search-buttons">
                   <a
                     class="waves-effect waves-light btn btn-small"
                     id="random-drink"
                     >Random Drink</a
                   >
-                  <a class="waves-effect waves-light btn btn-small" id="choice"
-                    >Search</a
+                  <button
+                    class="waves-effect waves-light btn btn-small"
+                    type="submit"
+                    name="action"
+                    id="choice"
                   >
+                    Search<i class="material-icons right">send</i>
+                  </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -92,7 +97,50 @@
         </div>
       </section>
     </main>
-    <footer class="page-footer"></footer>
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Five o'clock Somewhere</h5>
+            <p class="grey-text text-lighten-4">
+              Powered by
+              <a
+                href="http://www.thecocktaildb.com"
+                target="_blank"
+                class="white-text"
+                >The Cocktail Database</a
+              >
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Popular Links</h5>
+            <ul>
+              <li>
+                <a class="grey-text text-lighten-3" href="about.html">About</a>
+              </li>
+              <li>
+                <a class="grey-text text-lighten-3" href="contact.html"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a class="grey-text text-lighten-3" href="random.html"
+                  >Random Drink</a
+                >
+              </li>
+              <li>
+                <a class="grey-text text-lighten-3" href="#popular-drinks"
+                  >Popular Drinks</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container center">© 2025 5o'Clock Somewhere</div>
+      </div>
+    </footer>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
