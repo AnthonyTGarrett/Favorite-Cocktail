@@ -36,11 +36,22 @@ window.onload = event => {
     const randomDrink = fetchProducts(singleRandomItemUrl);
 
     randomDrink.then(data => {
+      const ingredientList = document.querySelector('.ingredient-list');
+
       document.querySelector('.random-header').textContent =
         data.drinks[0].strDrink;
       document
         .querySelector('.random-image')
         .setAttribute('src', data.drinks[0].strDrinkThumb);
+      for (let i = 1; i < 15; i++) {
+        if (data.drinks[0]['strIngredient' + i]) {
+          ingredientList.innerHTML += `<li>${
+            data.drinks[0]['strIngredient' + i]
+          } ${data.drinks[0]['strMeasure' + i]}</li>`;
+        }
+      }
+      document.querySelector('.instructions').textContent =
+        data.drinks[0].strInstructions;
     });
   } else {
     popularDrinks
