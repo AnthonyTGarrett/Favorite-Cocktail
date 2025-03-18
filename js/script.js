@@ -7,7 +7,7 @@ const randomButton = document.getElementById('random-drink');
 const popularDrinksInsert = document.getElementById('popular-drink-items');
 const singleDrinkInsert = document.querySelector('.single-drink-insert');
 
-randomButton.addEventListener('click', randomDisplay);
+// randomButton.addEventListener('click', randomDisplay);
 
 const singleRandomItemUrl =
   'https://www.thecocktaildb.com/api/json/v2/961249867/random.php';
@@ -90,19 +90,19 @@ window.onload = event => {
   }
 };
 
-function randomDisplay() {
-  const promise = fetchProducts(singleRandomItemUrl);
-  promise
-    .then(data => {
-      // console.log(data.drinks[0]);
-      // singleDrinkInsert.innerHTML += data.drinks[0].strDrink;
-      // localStorage.setItem('randomDrink', data.drinks[0]);
-    })
-    .catch(error => {
-      console.error(`Could not get products: ${error}`);
-    })
-    .finally(() => {
-      // Navigate to the new page after the API call (success or failure)
-      window.location.href = 'random.html';
-    });
-}
+// function randomDisplay() {
+//   const promise = fetchProducts(singleRandomItemUrl);
+//   promise
+//     .then(data => {
+//       // console.log(data.drinks[0]);
+//       // singleDrinkInsert.innerHTML += data.drinks[0].strDrink;
+//       // localStorage.setItem('randomDrink', data.drinks[0]);
+//     })
+//     .catch(error => {
+//       console.error(`Could not get products: ${error}`);
+//     })
+//     .finally(() => {
+//       // Navigate to the new page after the API call (success or failure)
+//       // window.location.href = 'random.html';
+//     });
+// }
