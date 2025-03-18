@@ -159,3 +159,12 @@ section.popular-drinks {
 .popular-drinks .container {
   margin-top: 6rem;
 }
+
+/* --------------------
+    Random Drink Page
+--------------------- */
+.random-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

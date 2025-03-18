@@ -32,34 +32,15 @@ async function fetchProducts(url) {
 const popularDrinks = fetchProducts(popularDrinksUrl);
 
 window.onload = event => {
-  if (document.URL.endsWith('random.html')) {
+  if (document.URL.includes('random.html')) {
     const randomDrink = fetchProducts(singleRandomItemUrl);
 
     randomDrink.then(data => {
-      document.querySelector(
-        '.single-drink-insert'
-      ).innerHTML += `<div class="col s12 m6 l4">
-          <div class="card hoverable">
-              <div class="card-image">
-                <img src="${data.drinks[0].strDrinkThumb}" />
-                <span class="card-title">${data.drinks[0].strDrink}</span>
-                  </div>
-                  <div class="card-content">
-                    <p>
-                      Glass: ${data.drinks[0].strGlass}
-                    </p>
-                    <p>
-                      Alcohol: ${data.drinks[0].strIngredient1}
-                    </p>
-                    <p>
-                      Type: ${data.drinks[0].strAlcoholic}
-                    </p>
-                  </div>
-                  <div class="card-action">
-                    <a href="#">Full Recipe</a>
-                  </div>
-            </div>
-          </div>`;
+      document.querySelector('.random-header').textContent =
+        data.drinks[0].strDrink;
+      document
+        .querySelector('.random-image')
+        .setAttribute('src', data.drinks[0].strDrinkThumb);
     });
   } else {
     popularDrinks
