@@ -176,3 +176,10 @@ section.popular-drinks {
 .random-image {
   width: 40%;
 }
+
+/* --------------------
+    Footer
+--------------------- */
+.page-footer {
+  background-color: var(--primary-color);
+}
