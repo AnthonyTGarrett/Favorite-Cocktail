@@ -117,3 +117,7 @@ function displaySingleDrink() {
       window.location.href = `drink.html?${userInput}`;
     });
 }
+function displayRandomDrink() {}
+function displayPopularDrinks() {}
+function displayLatestDrinks() {}
+function displayRelatedDrinks() {}
