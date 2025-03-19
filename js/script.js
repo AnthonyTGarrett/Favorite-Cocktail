@@ -50,8 +50,14 @@ window.onload = event => {
           } ${data.drinks[0]['strMeasure' + i]}</li>`;
         }
       }
-      document.querySelector('.instructions').textContent =
-        data.drinks[0].strInstructions;
+
+      for (let el of data.drinks[0].strInstructions.split('.')) {
+        if (el) {
+          document.querySelector(
+            '.instructions'
+          ).innerHTML += `<li>${el}.</li>`;
+        }
+      }
     });
   } else {
     popularDrinks

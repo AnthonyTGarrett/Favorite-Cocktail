@@ -183,7 +183,7 @@ section.popular-drinks {
   width: 40%;
 }
 
-.ingredients h3 {
+.random-container h3 {
   padding-bottom: 1rem;
   border-bottom: 3px var(--primary-color) double;
 }
@@ -194,6 +194,14 @@ section.popular-drinks {
 
 .ingredients .ingredient-list li {
   list-style: circle;
+}
+
+.instructions {
+  padding-inline-start: 1rem;
+}
+
+.instructions li {
+  padding: 0.4rem 0;
 }
 
 /* --------------------
