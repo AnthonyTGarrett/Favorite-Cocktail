@@ -30,7 +30,6 @@ h6 {
 }
 
 h1 {
-  width: 60%;
   font-size: 3.5rem;
   line-height: 1.5;
   text-align: center;
@@ -113,10 +112,6 @@ nav ul a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.right-main h1 {
-  width: 40%;
 }
 
 .cocktail-header-box {
