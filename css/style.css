@@ -119,11 +119,6 @@ nav ul a {
   width: 40%;
 }
 
-/* .right-main img {
-  width: 40%;
-  height: auto;
-} */
-
 .cocktail-header-box {
   display: flex;
   flex-direction: column;
@@ -137,6 +132,10 @@ nav ul a {
   margin: 0 auto;
 }
 
+.right-main-container img {
+  max-width: 60%;
+  margin: 0 auto;
+}
 .search-buttons {
   text-align: center;
 }
