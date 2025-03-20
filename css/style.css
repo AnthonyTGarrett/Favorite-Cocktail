@@ -129,6 +129,7 @@ nav ul a {
 
 .right-main-container img {
   /* max-width: 60%; */
+  width: 50%;
   margin: 0 auto;
 }
 .search-buttons {
