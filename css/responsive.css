@@ -1,0 +1,13 @@
+@media (max-width: 600px) {
+  .input-field {
+    width: 100%;
+  }
+
+  .random-container {
+    width: 100%;
+  }
+
+  .right-main h1 {
+    width: 70%;
+  }
+}
