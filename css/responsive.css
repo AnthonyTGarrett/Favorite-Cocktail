@@ -6,4 +6,8 @@
   .random-container {
     width: 100%;
   }
+
+  .right-main-container img {
+    width: 100%;
+  }
 }
