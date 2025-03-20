@@ -34,11 +34,17 @@ h1 {
   font-size: 3.5rem;
   line-height: 1.5;
   text-align: center;
+  text-wrap: balance;
 }
 
 #glass-icon {
   font-size: 1.7rem;
   color: var(--dark-gray);
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 nav {
@@ -113,10 +119,10 @@ nav ul a {
   width: 40%;
 }
 
-.right-main img {
+/* .right-main img {
   width: 40%;
   height: auto;
-}
+} */
 
 .cocktail-header-box {
   display: flex;
@@ -127,6 +133,8 @@ nav ul a {
 
 .right-main-container {
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .search-buttons {
