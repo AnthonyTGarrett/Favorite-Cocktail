@@ -7,24 +7,34 @@ const urls = {
   latest: 'https://www.thecocktaildb.com/api/json/v2/961249867/latest.php',
   ingredient:
     'https://www.thecocktaildb.com/api/json/v2/961249867/filter.php?i=',
+  id: 'https://www.thecocktaildb.com/api/json/v2/961249867/lookup.php?i=',
 };
 
 function displaySingleDrink(e) {
-  const userInput = userDrinkInput.value.trim().split(' ').join('&');
+  const promise = fetchProducts(urls.id + e);
 
-  const promise = fetchProducts(urls.name + userInput);
-  promise
-    .then(data => {
-      // singleDrinkInsert.innerHTML += data.drinks[0].strDrink;
-      // localStorage.setItem('randomDrink', data.drinks[0]);
-    })
-    .catch(error => {
-      console.error(`Could not get products: ${error}`);
-    })
-    .finally(() => {
-      // Navigate to the new page after the API call (success or failure)
-      window.location.href = `drink.html?${userInput}`;
-    });
+  promise.then(data => {
+    const ingredientList = document.querySelector('.ingredient-list');
+
+    document.querySelector('.random-header').textContent =
+      data.drinks[0].strDrink;
+    document
+      .querySelector('.random-image')
+      .setAttribute('src', data.drinks[0].strDrinkThumb);
+    for (let i = 1; i < 15; i++) {
+      if (data.drinks[0]['strIngredient' + i]) {
+        ingredientList.innerHTML += `<li>${
+          data.drinks[0]['strIngredient' + i]
+        } ${data.drinks[0]['strMeasure' + i]}</li>`;
+      }
+    }
+
+    for (let el of data.drinks[0].strInstructions.split('.')) {
+      if (el) {
+        document.querySelector('.instructions').innerHTML += `<li>${el}.</li>`;
+      }
+    }
+  });
 }
 function displayRandomDrink() {
   const randomDrink = fetchProducts(urls.random);
@@ -78,8 +88,8 @@ function displayPopularDrinks() {
                       Type: ${element.strAlcoholic}
                     </p>
                   </div>
-                  <div class="card-action">
-                    <a href="#" class="single-link">Full Recipe</a>
+                  <div class="card-action" data-target="${element.idDrink}">
+                    <a href="drink.html" class="single-link">Full Recipe</a>
                   </div>
             </div>
           </div>
@@ -109,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.URL.includes('random')) {
     displayRandomDrink();
   } else if (document.URL.includes('drink')) {
-    displaySingleDrink();
+    displaySingleDrink(document.URL.split('?')[1]);
     displayRelatedDrinks();
   } else if (
     !document.URL.includes('random') ||
@@ -118,9 +128,12 @@ document.addEventListener('DOMContentLoaded', function () {
   ) {
     displayPopularDrinks();
   }
-  document.querySelectorAll('.footer-copyright').forEach(item => {
-    item.addEventListener('click', event => {
-      console.log('onclick event occurred.');
+
+  setTimeout(() => {
+    document.querySelectorAll('.single-link').forEach(item => {
+      item.addEventListener('click', event => {
+        displaySingleDrink(event.currentTarget.parentNode.dataset.target);
+      });
     });
-  });
+  }, '1000');
 });
