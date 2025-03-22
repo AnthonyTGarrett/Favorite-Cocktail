@@ -114,16 +114,16 @@ async function fetchProducts(url) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  if (!complete) {
-    const complete = fetchProducts(urls.type);
-    const autoCompleteData = {};
+  // if (!complete) {
+  //   const complete = fetchProducts(urls.type);
+  //   const autoCompleteData = {};
 
-    complete.then(data => {
-      complete.forEach(element => {
-        autoCompleteData[element];
-      });
-    });
-  }
+  //   complete.then(data => {
+  //     complete.forEach(element => {
+  //       autoCompleteData[element];
+  //     });
+  //   });
+  // }
 
   var elems = document.querySelectorAll('.sidenav');
   var instances = M.Sidenav.init(elems, { edge: 'right' });
