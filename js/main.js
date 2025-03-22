@@ -10,16 +10,16 @@ const urls = {
   id: 'https://www.thecocktaildb.com/api/json/v2/961249867/lookup.php?i=',
 };
 
-function displaySingleDrink(e) {
-  const promise = fetchProducts(urls.id + e);
-
+function displaySingleDrink() {
+  const promise = fetchProducts(urls.id + document.URL.split('?')[1]);
+  console.log(promise);
   promise.then(data => {
     const ingredientList = document.querySelector('.ingredient-list');
 
     document.querySelector('.random-header').textContent =
       data.drinks[0].strDrink;
     document
-      .querySelector('.random-image')
+      .querySelector('.single-image')
       .setAttribute('src', data.drinks[0].strDrinkThumb);
     for (let i = 1; i < 15; i++) {
       if (data.drinks[0]['strIngredient' + i]) {
@@ -89,7 +89,7 @@ function displayPopularDrinks() {
                     </p>
                   </div>
                   <div class="card-action" data-target="${element.idDrink}">
-                    <a href="drink.html" class="single-link">Full Recipe</a>
+                    <a href="drink.html?${element.idDrink}" class="single-link">Full Recipe</a>
                   </div>
             </div>
           </div>
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.URL.includes('random')) {
     displayRandomDrink();
   } else if (document.URL.includes('drink')) {
-    displaySingleDrink(document.URL.split('?')[1]);
+    displaySingleDrink();
     displayRelatedDrinks();
   } else if (
     !document.URL.includes('random') ||
@@ -128,12 +128,4 @@ document.addEventListener('DOMContentLoaded', function () {
   ) {
     displayPopularDrinks();
   }
-
-  setTimeout(() => {
-    document.querySelectorAll('.single-link').forEach(item => {
-      item.addEventListener('click', event => {
-        displaySingleDrink(event.currentTarget.parentNode.dataset.target);
-      });
-    });
-  }, '1000');
 });
