@@ -8,6 +8,7 @@ const urls = {
   ingredient:
     'https://www.thecocktaildb.com/api/json/v2/961249867/filter.php?i=',
   id: 'https://www.thecocktaildb.com/api/json/v2/961249867/lookup.php?i=',
+  type: 'https://www.thecocktaildb.com/api/json/v2/961249867/filter.php?a=Alcoholic',
 };
 
 function displaySingleDrink() {
@@ -113,6 +114,17 @@ async function fetchProducts(url) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  if (!complete) {
+    const complete = fetchProducts(urls.type);
+    const autoCompleteData = {};
+
+    complete.then(data => {
+      complete.forEach(element => {
+        autoCompleteData[element];
+      });
+    });
+  }
+
   var elems = document.querySelectorAll('.sidenav');
   var instances = M.Sidenav.init(elems, { edge: 'right' });
 
