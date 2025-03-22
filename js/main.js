@@ -1,40 +1,18 @@
 'use strict';
 
-const singleRandomItemUrl =
-  'https://www.thecocktaildb.com/api/json/v2/961249867/random.php';
+const urls = {
+  random: 'https://www.thecocktaildb.com/api/json/v2/961249867/random.php',
+  name: 'https://www.thecocktaildb.com/api/json/v2/961249867/search.php?s=',
+  popular: `https://www.thecocktaildb.com/api/json/v2/961249867/popular.php`,
+  latest: 'https://www.thecocktaildb.com/api/json/v2/961249867/latest.php',
+  ingredient:
+    'https://www.thecocktaildb.com/api/json/v2/961249867/filter.php?i=',
+};
 
-const nameSearchUrl =
-  'https://www.thecocktaildb.com/api/json/v2/961249867/search.php?s=';
-
-const popularDrinksUrl = `https://www.thecocktaildb.com/api/json/v2/961249867/popular.php`;
-
-const latestDrinkUrl =
-  'https://www.thecocktaildb.com/api/json/v2/961249867/latest.php';
-
-const popularDrinksInsert = document.getElementById('popular-drink-items');
-
-document.addEventListener('DOMContentLoaded', function () {
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems, { edge: 'right' });
-
-  if (document.URL.includes('random')) {
-    displayRandomDrink();
-  } else if (document.URL.includes('drink')) {
-    displaySingleDrink();
-    displayRelatedDrinks();
-  } else if (
-    document.URL.includes('random') ||
-    document.URL.includes('drink') ||
-    document.URL.includes('about')
-  ) {
-    displayPopularDrinks();
-  }
-});
-
-function displaySingleDrink() {
+function displaySingleDrink(e) {
   const userInput = userDrinkInput.value.trim().split(' ').join('&');
 
-  // const promise = fetchProducts(nameSearchUrl + userInput);
+  const promise = fetchProducts(urls.name + userInput);
   promise
     .then(data => {
       // singleDrinkInsert.innerHTML += data.drinks[0].strDrink;
@@ -49,7 +27,7 @@ function displaySingleDrink() {
     });
 }
 function displayRandomDrink() {
-  const randomDrink = fetchProducts(singleRandomItemUrl);
+  const randomDrink = fetchProducts(urls.random);
 
   randomDrink.then(data => {
     const ingredientList = document.querySelector('.ingredient-list');
@@ -75,35 +53,36 @@ function displayRandomDrink() {
   });
 }
 function displayPopularDrinks() {
-  const popularDrinks = fetchProducts(popularDrinksUrl);
+  const popularDrinksInsert = document.getElementById('popular-drink-items');
+  const popularDrinks = fetchProducts(urls.popular);
 
   popularDrinks
     .then(data => {
       const partialArr = data.drinks.splice(0, 9);
       partialArr.forEach(element => {
         popularDrinksInsert.innerHTML += `
-      <div class="col s12 m6 l4">
-        <div class="card hoverable">
-            <div class="card-image">
-              <img src="${element.strDrinkThumb}" />
-              <span class="card-title">${element.strDrink}</span>
-                </div>
-                <div class="card-content">
-                  <p>
-                    Glass: ${element.strGlass}
-                  </p>
-                  <p>
-                    Alcohol: ${element.strIngredient1}
-                  </p>
-                  <p>
-                    Type: ${element.strAlcoholic}
-                  </p>
-                </div>
-                <div class="card-action">
-                  <a href="#">Full Recipe</a>
-                </div>
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+              <div class="card-image">
+                <img src="${element.strDrinkThumb}" />
+                <span class="card-title">${element.strDrink}</span>
+                  </div>
+                  <div class="card-content">
+                    <p>
+                      Glass: ${element.strGlass}
+                    </p>
+                    <p>
+                      Alcohol: ${element.strIngredient1}
+                    </p>
+                    <p>
+                      Type: ${element.strAlcoholic}
+                    </p>
+                  </div>
+                  <div class="card-action">
+                    <a href="#" class="single-link">Full Recipe</a>
+                  </div>
+            </div>
           </div>
-        </div>
   `;
       });
     })
@@ -122,3 +101,26 @@ async function fetchProducts(url) {
   const data = await response.json();
   return data;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, { edge: 'right' });
+
+  if (document.URL.includes('random')) {
+    displayRandomDrink();
+  } else if (document.URL.includes('drink')) {
+    displaySingleDrink();
+    displayRelatedDrinks();
+  } else if (
+    !document.URL.includes('random') ||
+    !document.URL.includes('drink') ||
+    !document.URL.includes('about')
+  ) {
+    displayPopularDrinks();
+  }
+  document.querySelectorAll('.footer-copyright').forEach(item => {
+    item.addEventListener('click', event => {
+      console.log('onclick event occurred.');
+    });
+  });
+});

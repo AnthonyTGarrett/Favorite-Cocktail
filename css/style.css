@@ -81,6 +81,10 @@ nav ul a {
   background-color: hsl(30, 100%, 70%);
 }
 
+.btn:focus {
+  background-color: var(--primary-color);
+}
+
 .input-field {
   width: 50%;
 }
