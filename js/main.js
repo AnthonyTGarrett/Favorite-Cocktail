@@ -101,7 +101,45 @@ function displayPopularDrinks() {
       console.error(`Could not get products: ${error}`);
     });
 }
-function displayLatestDrinks() {}
+function displayLatestDrinks() {
+  const latestDrinksInsert = document.getElementById('latest-drink-items');
+  const latestDrinks = fetchProducts(urls.latest);
+
+  popularDrinks
+    .then(data => {
+      const partialArr = data.drinks.splice(0, 9);
+      partialArr.forEach(element => {
+        popularDrinksInsert.innerHTML += `
+      <div class="col s12 m6 l4">
+        <div class="card hoverable">
+            <div class="card-image">
+              <img src="${element.strDrinkThumb}" />
+              <span class="card-title">${element.strDrink}</span>
+                </div>
+                <div class="card-content">
+                  <p>
+                    Glass: ${element.strGlass}
+                  </p>
+                  <p>
+                    Alcohol: ${element.strIngredient1}
+                  </p>
+                  <p>
+                    Type: ${element.strAlcoholic}
+                  </p>
+                </div>
+                <div class="card-action" data-target="${element.idDrink}">
+                  <a href="drink.html?${element.idDrink}" class="single-link">Full Recipe</a>
+                </div>
+          </div>
+        </div>
+`;
+      });
+    })
+    .catch(error => {
+      console.error(`Could not get products: ${error}`);
+    });
+}
+
 function displayRelatedDrinks() {}
 
 async function fetchProducts(url) {
