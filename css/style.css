@@ -167,6 +167,19 @@ section.popular-drinks {
   margin-top: 6rem;
 }
 
+section.latest-drinks {
+  padding: 4rem 0;
+}
+
+.latest-drinks hr {
+  width: 14rem;
+  border: 1px solid var(--primary-color);
+}
+
+.latest-drinks .container {
+  margin-top: 6rem;
+}
+
 /* --------------------
     Random Drink Page
 --------------------- */

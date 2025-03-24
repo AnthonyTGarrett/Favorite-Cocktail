@@ -105,11 +105,11 @@ function displayLatestDrinks() {
   const latestDrinksInsert = document.getElementById('latest-drink-items');
   const latestDrinks = fetchProducts(urls.latest);
 
-  popularDrinks
+  latestDrinks
     .then(data => {
-      const partialArr = data.drinks.splice(0, 9);
-      partialArr.forEach(element => {
-        popularDrinksInsert.innerHTML += `
+      // const partialArr = data.drinks.splice(0, 9);
+      data.drinks.forEach(element => {
+        latestDrinksInsert.innerHTML += `
       <div class="col s12 m6 l4">
         <div class="card hoverable">
             <div class="card-image">
@@ -176,6 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
     !document.URL.includes('drink') ||
     !document.URL.includes('about')
   ) {
-    displayPopularDrinks();
+    displayLatestDrinks();
   }
 });
