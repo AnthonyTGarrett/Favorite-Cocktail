@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <!-- Compiled and minified CSS -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -17,84 +22,81 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper white">
-          <a href="index.html" class="brand-logo center">
-            <i id="glass-icon" class="material-icons hide-on-med-and-down"
-              >local_bar</i
+    <main>
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper white">
+            <a href="index.html" class="brand-logo center">
+              <i id="glass-icon" class="material-icons hide-on-med-and-down"
+                >local_bar</i
+              >
+              Five O'Clock
+              <span class="hide-on-med-and-down">Somewhere</span></a
             >
-            Five O'Clock
-            <span class="hide-on-med-and-down">Somewhere</span></a
-          >
-          <a href="#" data-target="mobile-nav" class="sidenav-trigger right"
-            ><i class="material-icons hamburger">menu</i></a
-          >
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="tipjar.html">TIP JAR</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger right"
+              ><i class="material-icons hamburger">menu</i></a
+            >
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="random.html">RANDOM</a></li>
+              <li><a href="popular.html">POPULAR</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
 
-    <!-- Side Navigation HTML -->
-    <ul class="sidenav" id="mobile-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="aboout.html">About</a></li>
-      <li><a href="tipjar.html">Tip Jar</a></li>
-      <li><a href="random.html">Random Drink</a></li>
-    </ul>
-    <section class="popular-drinks" id="popular-drinks">
-      <h2 class="flow-text center">The Drinks That Everyone Loves</h2>
-      <hr />
+      <!-- Side Navigation HTML -->
+      <ul class="sidenav" id="mobile-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="popular.html">Popular</a></li>
+        <li><a href="random.html">Random Drink</a></li>
+      </ul>
+      <section class="popular-drinks" id="popular-drinks">
+        <h2 class="flow-text center">The Drinks That Everyone Loves</h2>
+        <hr />
+        <div class="container">
+          <div class="row" id="popular-drink-items"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="page-footer">
       <div class="container">
-        <div class="row" id="popular-drink-items"></div>
-      </div>
-    </section>
-  </main>
-  <footer class="page-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Five o'clock Somewhere</h5>
-          <p class="grey-text text-lighten-4">
-            Powered by
-            <a
-              href="http://www.thecocktaildb.com"
-              target="_blank"
-              class="white-text"
-              >The Cocktail Database</a
-            >
-          </p>
-        </div>
-        <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Popular Links</h5>
-          <ul>
-            <li>
-              <a class="grey-text text-lighten-3" href="index.html">Home</a>
-            </li>
-            <li>
-              <a class="grey-text text-lighten-3" href="about.html">About</a>
-            </li>
-            <li>
-              <a class="grey-text text-lighten-3" href="random.html"
-                >Random Drink</a
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Five o'clock Somewhere</h5>
+            <p class="grey-text text-lighten-4">
+              Powered by
+              <a
+                href="http://www.thecocktaildb.com"
+                target="_blank"
+                class="white-text"
+                >The Cocktail Database</a
               >
-            </li>
-            <li>
-              <a class="grey-text text-lighten-3" href="index.html"
-                >Popular Drinks</a
-              >
-            </li>
-          </ul>
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Popular Links</h5>
+            <ul>
+              <li>
+                <a class="grey-text text-lighten-3" href="index.html">Home</a>
+              </li>
+              <li>
+                <a class="grey-text text-lighten-3" href="random.html"
+                  >Random Drink</a
+                >
+              </li>
+              <li>
+                <a class="grey-text text-lighten-3" href="popular.html"
+                  >Popular Drinks</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container center">© 2025 5o'Clock Somewhere</div>
-    </div>
-  </footer>
+      <div class="footer-copyright">
+        <div class="container center">© 2025 5o'Clock Somewhere</div>
+      </div>
+    </footer>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/main.js"></script>
