@@ -161,55 +161,22 @@ nav ul a {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-section.popular-drinks {
-  padding: 4rem 0;
-}
-
-.popular-drinks hr {
-  width: 14rem;
-  border: 1px solid var(--primary-color);
-}
-
-.popular-drinks .container {
-  margin-top: 6rem;
-}
-
-section.latest-drinks {
-  padding: 4rem 0;
-}
-
-.latest-drinks hr {
-  width: 14rem;
-  border: 1px solid var(--primary-color);
-}
-
-.latest-drinks .container {
-  margin-top: 6rem;
-}
-
+section.popular-drinks,
+section.latest-drinks,
 section.search-drinks {
   padding: 4rem 0;
 }
 
+.popular-drinks hr,
+.latest-drinks hr,
 .search-drinks hr {
   width: 14rem;
   border: 1px solid var(--primary-color);
 }
 
+.popular-drinks .container,
+.latest-drinks .container,
 .search-drinks .container {
-  margin-top: 6rem;
-}
-
-section.related-drinks {
-  padding: 4rem 0;
-}
-
-.related-drinks hr {
-  width: 14rem;
-  border: 1px solid var(--primary-color);
-}
-
-.related-drinks .container {
   margin-top: 6rem;
 }
 
