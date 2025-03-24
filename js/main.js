@@ -6,7 +6,6 @@ const urls = {
   popular: `https://www.thecocktaildb.com/api/json/v2/961249867/popular.php`,
   latest: 'https://www.thecocktaildb.com/api/json/v2/961249867/latest.php',
   id: 'https://www.thecocktaildb.com/api/json/v2/961249867/lookup.php?i=',
-  type: 'https://www.thecocktaildb.com/api/json/v2/961249867/filter.php?a=Alcoholic',
 };
 
 function displaySingleDrink() {
