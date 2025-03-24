@@ -69,8 +69,7 @@ function displayPopularDrinks() {
 
   popularDrinks
     .then(data => {
-      const partialArr = data.drinks.splice(0, 9);
-      partialArr.forEach(element => {
+      data.drinks.forEach(element => {
         popularDrinksInsert.innerHTML += `
         <div class="col s12 m6 l4">
           <div class="card hoverable">
@@ -172,10 +171,13 @@ document.addEventListener('DOMContentLoaded', function () {
     displaySingleDrink();
     displayRelatedDrinks();
   } else if (
-    !document.URL.includes('random') ||
-    !document.URL.includes('drink') ||
-    !document.URL.includes('about')
+    !document.URL.includes('random') &&
+    !document.URL.includes('drink') &&
+    !document.URL.includes('about') &&
+    !document.URL.includes('popular')
   ) {
     displayLatestDrinks();
+  } else if (document.URL.includes('popular')) {
+    displayPopularDrinks();
   }
 });

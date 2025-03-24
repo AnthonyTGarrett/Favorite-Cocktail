@@ -188,6 +188,7 @@ section.latest-drinks {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  padding-bottom: 6rem;
 }
 
 .random-container img {
