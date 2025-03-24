@@ -13,7 +13,6 @@ const urls = {
 
 function displaySingleDrink() {
   const promise = fetchProducts(urls.id + document.URL.split('?')[1]);
-  console.log(promise);
   promise.then(data => {
     const ingredientList = document.querySelector('.ingredient-list');
 
