@@ -12,7 +12,7 @@
   }
 }
 
-@media (max-width: 900px) and (orientation: landscape) {
+@media (max-width: 925px) and (orientation: landscape) {
   .right-main-container img {
     width: 22%;
   }
