@@ -11,3 +11,14 @@
     width: 100%;
   }
 }
+
+@media (max-width: 925px) and (orientation: landscape) {
+  .right-main-container img {
+    width: 22%;
+  }
+
+  .cocktail-header-box h1 {
+    padding: 0;
+    margin: 0;
+  }
+}
