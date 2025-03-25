@@ -5,10 +5,7 @@ const urls = {
   name: 'https://www.thecocktaildb.com/api/json/v2/961249867/search.php?s=',
   popular: `https://www.thecocktaildb.com/api/json/v2/961249867/popular.php`,
   latest: 'https://www.thecocktaildb.com/api/json/v2/961249867/latest.php',
-  ingredient:
-    'https://www.thecocktaildb.com/api/json/v2/961249867/filter.php?i=',
   id: 'https://www.thecocktaildb.com/api/json/v2/961249867/lookup.php?i=',
-  type: 'https://www.thecocktaildb.com/api/json/v2/961249867/filter.php?a=Alcoholic',
 };
 
 function displaySingleDrink() {
@@ -99,6 +96,54 @@ function displayPopularDrinks() {
       console.error(`Could not get products: ${error}`);
     });
 }
+
+function displaySearchDrinks() {
+  const searchDrinksInsert = document.getElementById('search-drink-items');
+  let urlParams = new URLSearchParams(window.location.search).get('cocktail');
+  urlParams = urlParams.split(' ').join('+');
+
+  const searchDrinks = fetchProducts(urls.name + urlParams);
+
+  searchDrinks
+    .then(data => {
+      if (data.drinks) {
+        data.drinks.forEach(element => {
+          searchDrinksInsert.innerHTML += `
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+              <div class="card-image">
+                <img src="${element.strDrinkThumb}" />
+                <span class="card-title">${element.strDrink}</span>
+                  </div>
+                  <div class="card-content">
+                    <p>
+                      Glass: ${element.strGlass}
+                    </p>
+                    <p>
+                      Alcohol: ${element.strIngredient1}
+                    </p>
+                    <p>
+                      Type: ${element.strAlcoholic}
+                    </p>
+                  </div>
+                  <div class="card-action" data-target="${element.idDrink}">
+                    <a href="drink.html?${element.idDrink}" class="single-link">Full Recipe</a>
+                  </div>
+            </div>
+          </div>
+  `;
+        });
+      } else {
+        searchDrinksInsert.innerHTML += `
+        <h3>No results found.</h3>
+        `;
+      }
+    })
+    .catch(error => {
+      console.error(`Could not get products: ${error}`);
+    });
+}
+
 function displayLatestDrinks() {
   const latestDrinksInsert = document.getElementById('latest-drink-items');
   const latestDrinks = fetchProducts(urls.latest);
@@ -138,8 +183,6 @@ function displayLatestDrinks() {
     });
 }
 
-function displayRelatedDrinks() {}
-
 async function fetchProducts(url) {
   const response = await fetch(url);
   if (!response.ok) {
@@ -150,17 +193,6 @@ async function fetchProducts(url) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // if (!complete) {
-  //   const complete = fetchProducts(urls.type);
-  //   const autoCompleteData = {};
-
-  //   complete.then(data => {
-  //     complete.forEach(element => {
-  //       autoCompleteData[element];
-  //     });
-  //   });
-  // }
-
   var elems = document.querySelectorAll('.sidenav');
   var instances = M.Sidenav.init(elems, { edge: 'right' });
 
@@ -168,14 +200,16 @@ document.addEventListener('DOMContentLoaded', function () {
     displayRandomDrink();
   } else if (document.URL.includes('drink')) {
     displaySingleDrink();
-    displayRelatedDrinks();
   } else if (
     !document.URL.includes('random') &&
     !document.URL.includes('drink') &&
     !document.URL.includes('about') &&
-    !document.URL.includes('popular')
+    !document.URL.includes('popular') &&
+    !document.URL.includes('search')
   ) {
     displayLatestDrinks();
+  } else if (document.URL.includes('search')) {
+    displaySearchDrinks();
   } else if (document.URL.includes('popular')) {
     displayPopularDrinks();
   }

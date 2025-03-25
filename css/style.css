@@ -14,10 +14,17 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .drag-target {
   height: 90vh;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 h1,
@@ -89,8 +96,8 @@ nav ul a {
   width: 50%;
 }
 
-#drink:active,
-#drink:focus {
+#cocktail:active,
+#cocktail:focus {
   border-bottom: 1px solid var(--primary-color);
   box-shadow: 0 1px 0 0 var(--primary-color);
 }
@@ -154,30 +161,27 @@ nav ul a {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-section.popular-drinks {
+section.popular-drinks,
+section.latest-drinks,
+section.search-drinks {
   padding: 4rem 0;
 }
 
-.popular-drinks hr {
+.popular-drinks hr,
+.latest-drinks hr,
+.search-drinks hr {
   width: 14rem;
   border: 1px solid var(--primary-color);
 }
 
-.popular-drinks .container {
+.popular-drinks .container,
+.latest-drinks .container,
+.search-drinks .container {
   margin-top: 6rem;
 }
 
-section.latest-drinks {
-  padding: 4rem 0;
-}
-
-.latest-drinks hr {
-  width: 14rem;
-  border: 1px solid var(--primary-color);
-}
-
-.latest-drinks .container {
-  margin-top: 6rem;
+form {
+  margin: 0 auto;
 }
 
 /* --------------------
