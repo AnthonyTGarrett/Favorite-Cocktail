@@ -20,9 +20,9 @@ function displaySingleDrink() {
       .setAttribute('src', data.drinks[0].strDrinkThumb);
     for (let i = 1; i < 15; i++) {
       if (data.drinks[0]['strIngredient' + i]) {
-        ingredientList.innerHTML += `<li>${
+        ingredientList.innerHTML += `<li> ${data.drinks[0]['strMeasure' + i]} ${
           data.drinks[0]['strIngredient' + i]
-        } ${data.drinks[0]['strMeasure' + i]}</li>`;
+        }</li>`;
       }
     }
 
@@ -46,9 +46,9 @@ function displayRandomDrink() {
       .setAttribute('src', data.drinks[0].strDrinkThumb);
     for (let i = 1; i < 15; i++) {
       if (data.drinks[0]['strIngredient' + i]) {
-        ingredientList.innerHTML += `<li>${
-          data.drinks[0]['strIngredient' + i]
-        } ${data.drinks[0]['strMeasure' + i]}</li>`;
+        ingredientList.innerHTML += `<li> ${
+          '' || data.drinks[0]['strMeasure' + i]
+        } ${data.drinks[0]['strIngredient' + i]}</li>`;
       }
     }
 
