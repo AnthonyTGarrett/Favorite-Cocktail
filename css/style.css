@@ -82,6 +82,7 @@ nav ul a {
 
 .btn {
   background-color: var(--primary-color);
+  margin-top: 2rem;
 }
 
 .btn:hover {
